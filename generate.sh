@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
+set -e
 
 out="build"
+font="/usr/share/fonts/truetype/roboto/unhinted/RobotoCondensed-Medium.ttf"
+
 mkdir -p "$out"
 
 # generate cards
@@ -11,7 +14,7 @@ cat phrases.txt | while read phrase; do
   convert \
     -background white \
     -fill black \
-    -font Ubuntu-Title \
+    -font $font \
     -extent 380x530 \
     -size 360x530 \
     -bordercolor gray \
