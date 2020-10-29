@@ -32,27 +32,20 @@ done
 
 # join cards
 
-echo 'join 1/3'
+echo 'join 1/1'
 convert \
-    '(' $out/{1,2,3}.png +append ')' \
-    '(' $out/{4,5,6}.png +append ')' \
-    '(' $out/{7,8,9}.png +append ')' \
+    '(' $out/{1,2,3,4}.png +append ')' \
+    '(' $out/{5,6,7,8}.png +append ')' \
+    '(' $out/{9,10,11,12}.png +append ')' \
+    '(' $out/{13,14,15,16}.png +append ')' \
     -background none \
-    -append $out/result-01-09.png
+    -append $out/result-01-16.png
 
-echo 'join 2/3'
+echo 'join 2/2'
 convert \
-    '(' $out/{10,11,12}.png +append ')' \
-    '(' $out/{13,14,15}.png +append ')' \
-    '(' $out/{16,17,18}.png +append ')' \
-    -background none \
-    -append $out/result-10-18.png
-
-echo 'join 3/3'
-convert \
-    '(' $out/{19,20,21}.png +append ')' \
-    '(' $out/{22,23,24}.png +append ')' \
+    '(' $out/{17,18,19,20}.png +append ')' \
+    '(' $out/{21,22,23,24}.png +append ')' \
     '(' $out/{25,26,27}.png +append ')' \
     -background none \
-    -append $out/result-19-27.png
+    -append $out/result-17-27.png
 

@@ -15,11 +15,11 @@ Say "No" if the answer is "No"
 Use TDD
 Allow major decisions to be deferred
 No global state
-Do not break interfaces
+Don't break interfaces
 Prove it
 Have sleep
 Don't work overtime
-Review to improve, not enforce
+Review to improve, not to enforce
 Prioritize
 Test behavior, not realization
 Be conservative in what you send, be liberal in what you accept
