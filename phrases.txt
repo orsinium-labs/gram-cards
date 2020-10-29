@@ -1,0 +1,20 @@
+Nothing is some else's problem
+Keep it simple
+Automate everything
+Decouple and isolate
+The project must always work
+Welcome changing requirements
+Never ship shit
+The software must be changeable
+Keep interfaces small
+The code must improve over time
+QA must find nothing
+Refactoring must be safe and easy
+Ask as much as you can
+Say "No" if the answer is "No"
+Use TDD
+Allow major decisions to be deferred
+No global state
+Do not break interfaces
+Prove it
+
