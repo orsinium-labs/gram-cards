@@ -2,6 +2,7 @@
 
 Cards with phrases that supposed to make you a better developer.
 
+* Download the cards from the [releases page](https://github.com/orsinium-labs/gram-cards/releases)
 * Run [./generate.sh](./generate.sh) to generate cards
 * Phrases are stored in [phrases.txt](./phrases.txt)
 * [ImageMagick](https://imagemagick.org/index.php) does the magic of generating cards. So, it has to be installed.
