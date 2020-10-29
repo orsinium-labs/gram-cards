@@ -7,7 +7,7 @@ Welcome changing requirements
 Never ship shit
 The software must be changeable
 Keep interfaces small
-The code must improve over time
+Leave the code better than you found it
 QA must find nothing
 Refactoring must be safe and easy
 Ask as much as you can
@@ -20,4 +20,7 @@ Prove it
 Have sleep
 Don't work overtime
 Review is a way to improve
+Prioritize
+Test behavior, not realization
+Be conservative in what you send, be liberal in what you accept
 
