@@ -23,4 +23,6 @@ Review is a way to improve
 Prioritize
 Test behavior, not realization
 Be conservative in what you send, be liberal in what you accept
+A little copying is better than a little dependency
+Clear is better than clever
 

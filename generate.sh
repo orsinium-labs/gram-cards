@@ -19,9 +19,13 @@ cat phrases.txt | grep -v "^$" | while read phrase; do
     -size 360x530 \
     -bordercolor gray \
     -border 2x2 \
-    -pointsize 56 \
+    -pointsize 48 \
     -gravity center \
     caption:"$phrase" \
+    -fill gray \
+    -pointsize 24 \
+    -gravity SouthEast \
+    -draw "text 20,20 '$n'" \
     "$out/$n.png"
 done
 
@@ -41,4 +45,11 @@ convert \
     '(' $out/{16,17,18}.png +append ')' \
     -background none \
     -append $out/result-10-18.png
+
+convert \
+    '(' $out/{19,20,21}.png +append ')' \
+    '(' $out/{22,23,24}.png +append ')' \
+    '(' $out/{25,26,27}.png +append ')' \
+    -background none \
+    -append $out/result-19-27.png
 
