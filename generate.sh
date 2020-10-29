@@ -15,17 +15,17 @@ cat phrases.txt | grep -v "^$" | while read phrase; do
     -background white \
     -fill black \
     -font $font \
-    -extent 380x530 \
-    -size 360x530 \
+    -extent 760x1060 \
+    -size 720x1060 \
     -bordercolor gray \
-    -border 2x2 \
-    -pointsize 48 \
+    -border 4x4 \
+    -pointsize 96 \
     -gravity center \
     caption:"$phrase" \
     -fill gray \
-    -pointsize 24 \
+    -pointsize 48 \
     -gravity SouthEast \
-    -draw "text 20,20 '$n'" \
+    -draw "text 40,40 '$n'" \
     "$out/$n.png"
 done
 
