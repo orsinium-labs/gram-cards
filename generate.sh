@@ -32,6 +32,7 @@ done
 
 # join cards
 
+echo 'join 1/3'
 convert \
     '(' $out/{1,2,3}.png +append ')' \
     '(' $out/{4,5,6}.png +append ')' \
@@ -39,6 +40,7 @@ convert \
     -background none \
     -append $out/result-01-09.png
 
+echo 'join 2/3'
 convert \
     '(' $out/{10,11,12}.png +append ')' \
     '(' $out/{13,14,15}.png +append ')' \
@@ -46,6 +48,7 @@ convert \
     -background none \
     -append $out/result-10-18.png
 
+echo 'join 3/3'
 convert \
     '(' $out/{19,20,21}.png +append ')' \
     '(' $out/{22,23,24}.png +append ')' \
