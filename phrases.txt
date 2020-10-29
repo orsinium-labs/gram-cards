@@ -19,7 +19,7 @@ Do not break interfaces
 Prove it
 Have sleep
 Don't work overtime
-Review is a way to improve
+Review to improve
 Prioritize
 Test behavior, not realization
 Be conservative in what you send, be liberal in what you accept

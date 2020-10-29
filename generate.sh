@@ -13,7 +13,7 @@ cat phrases.txt | grep -v "^$" | while read phrase; do
   echo "$n. $phrase"
   convert \
     -background white \
-    -fill black \
+    -fill '#2c3e50' \
     -font $font \
     -extent 760x1060 \
     -size 720x1060 \
@@ -22,7 +22,7 @@ cat phrases.txt | grep -v "^$" | while read phrase; do
     -pointsize 96 \
     -gravity center \
     caption:"$phrase" \
-    -fill gray \
+    -fill '#95a5a6' \
     -pointsize 48 \
     -gravity SouthEast \
     -draw "text 40,40 '$n'" \
