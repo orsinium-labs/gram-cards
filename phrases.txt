@@ -17,4 +17,7 @@ Allow major decisions to be deferred
 No global state
 Do not break interfaces
 Prove it
+Have sleep
+Don't work overtime
+Review is a way to improve
 

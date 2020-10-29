@@ -2,13 +2,13 @@
 set -e
 
 out="build"
-font="/usr/share/fonts/truetype/roboto/unhinted/RobotoCondensed-Medium.ttf"
+font="PublicSans-Black.otf"
 
 mkdir -p "$out"
 
 # generate cards
 n=0
-cat phrases.txt | while read phrase; do
+cat phrases.txt | grep -v "^$" | while read phrase; do
   n=$((n+1))
   echo "$n. $phrase"
   convert \
