@@ -1,4 +1,4 @@
-Nothing is some else's problem
+Nothing is somebody else's problem
 Keep it simple
 Automate everything
 Decouple and isolate
