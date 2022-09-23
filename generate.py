@@ -24,6 +24,8 @@ class Card:
     height: int
     font_size: int
     text: str
+    radius: int
+    stroke_width: int
 
     def render(self) -> svg.Element:
         line_height = round(self.font_size * 1.2, 2)
@@ -37,17 +39,27 @@ class Card:
             lines.append(tspan)
         text_height = len(lines) * line_height
 
+        r = self.radius
         return svg.G(
             transform=[
                 svg.Translate(x=self.coord.x, y=self.coord.y),
             ],
             elements=[
-                svg.Rect(
-                    x=0, y=0,
-                    width=self.width,
-                    height=self.height,
-                    stroke='red',
+                svg.Path(
                     fill='none',
+                    stroke='red',
+                    stroke_width=self.stroke_width,
+                    d=[
+                        svg.MoveTo(r, 0),
+                        svg.LineTo(self.width - r, 0),
+                        self._draw_corner(r, r),
+                        svg.LineTo(self.width, self.height - r),
+                        self._draw_corner(-r, r),
+                        svg.LineTo(0 + r, self.height),
+                        self._draw_corner(-r, -r),
+                        svg.LineTo(0, r),
+                        self._draw_corner(r, -r),
+                    ],
                 ),
                 svg.Text(
                     y=self.height // 2 - text_height // 2,
@@ -61,6 +73,18 @@ class Card:
             ],
         )
 
+    def _draw_corner(self, dx: int, dy: int) -> svg.ArcRel:
+        """Produce an arc for rounded corner
+        """
+        return svg.ArcRel(
+            rx=self.radius,
+            ry=self.radius,
+            angle=0,
+            large_arc=False,
+            sweep=True,
+            dx=dx, dy=dy,
+        )
+
 
 @dataclass
 class Generator:
@@ -70,6 +94,8 @@ class Generator:
     card_height: int
     border: int
     padding: int
+    corner_radius: int
+    stroke_width: int
     font_size: int
     output: Path
 
@@ -111,7 +137,7 @@ class Generator:
         """List of all cards to render.
         """
         cards = []
-        phrases = (ROOT / 'phrases.txt').read_text().splitlines()
+        phrases = (ROOT / 'phrases.txt').read_text().strip().splitlines()
         for coord, phrase in zip(self.iter_coords(), phrases):
             cards.append(Card(
                 coord=coord,
@@ -119,6 +145,8 @@ class Generator:
                 width=self.card_width,
                 height=self.card_height,
                 font_size=self.font_size,
+                radius=self.corner_radius,
+                stroke_width=self.stroke_width,
             ))
         return cards
 
@@ -139,14 +167,46 @@ class Generator:
 
 def main() -> None:
     parser = ArgumentParser()
-    parser.add_argument('--page-width', type=int, default=210)
-    parser.add_argument('--page-height', type=int, default=297)
-    parser.add_argument('--card-width', type=int, default=60)
-    parser.add_argument('--card-height', type=int, default=90)
-    parser.add_argument('--border', type=int, default=5)
-    parser.add_argument('--padding', type=int, default=2)
-    parser.add_argument('--font-size', type=int, default=6)
-    parser.add_argument('--output', type=Path, default=ROOT / 'build')
+    parser.add_argument(
+        '--page-width', type=int, default=210,
+        help='horizontal size of each page',
+    )
+    parser.add_argument(
+        '--page-height', type=int, default=297,
+        help='vertical size of each page',
+    )
+    parser.add_argument(
+        '--card-width', type=int, default=60,
+        help='horizontal size of each card',
+    )
+    parser.add_argument(
+        '--card-height', type=int, default=90,
+        help='vertical size of each card',
+    )
+    parser.add_argument(
+        '--border', type=int, default=5,
+        help='distance to keep from each page edge',
+    )
+    parser.add_argument(
+        '--padding', type=int, default=2,
+        help='distance between cards',
+    )
+    parser.add_argument(
+        '--font-size', type=int, default=6,
+        help='size of the font for text on cards',
+    )
+    parser.add_argument(
+        '--corner-radius', type=int, default=5,
+        help='radius of the corner for each card frame',
+    )
+    parser.add_argument(
+        '--stroke-width', type=int, default=1,
+        help='line width for card frames',
+    )
+    parser.add_argument(
+        '--output', type=Path, default=ROOT / 'build',
+        help='path where to write generated pages',
+    )
     args = parser.parse_args()
     generator = Generator(**vars(args))
     generator.save_all()
