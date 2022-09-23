@@ -6,6 +6,10 @@ Gram cards is a collection of smart phrases from smart people about software eng
 
 All pages are A4 SVG images generated with [svg.py](https://github.com/orsinium-labs/svg.py). So, you can scale and modify them as you want. And if you have a laser cutter, you can also automate cutting them out.
 
+Example of generated card:
+
+![example](./example.png)
+
 ## Download
 
 Download the cards from the [releases page](https://github.com/orsinium-labs/gram-cards/releases).
