@@ -2,12 +2,18 @@ from __future__ import annotations
 from argparse import ArgumentParser
 from dataclasses import dataclass
 from functools import cached_property
+from itertools import count
 from pathlib import Path
 from textwrap import wrap
 from typing import Iterator
 import svg
 
 ROOT = Path(__file__).parent
+
+PAGE_BG_COLOR = 'white'
+CARD_FRAME_COLOR = 'red'
+CARD_TEXT_COLOR = 'black'
+CARD_NUMBER_COLOR = 'grey'
 
 
 @dataclass
@@ -20,6 +26,7 @@ class Coord:
 @dataclass
 class Card:
     coord: Coord
+    number: int
     width: int
     height: int
     font_size: int
@@ -27,7 +34,7 @@ class Card:
     radius: int
     stroke_width: int
 
-    def render(self) -> svg.Element:
+    def render(self) -> svg.G:
         line_height = round(self.font_size * 1.2, 2)
         lines: list[svg.Element] = []
         for line in wrap(self.text, 14):
@@ -47,7 +54,7 @@ class Card:
             elements=[
                 svg.Path(
                     fill='none',
-                    stroke='red',
+                    stroke=CARD_FRAME_COLOR,
                     stroke_width=self.stroke_width,
                     d=[
                         svg.MoveTo(r, 0),
@@ -65,10 +72,19 @@ class Card:
                     y=self.height // 2 - text_height // 2,
                     dominant_baseline='middle',
                     text_anchor='middle',
-                    fill='black',
+                    fill=CARD_TEXT_COLOR,
                     font_size=self.font_size,
                     font_family='Roboto Mono, monospace',
                     elements=lines,
+                ),
+                svg.Text(
+                    x=self.width - 5,
+                    y=self.height - 5,
+                    text_anchor='end',
+                    fill=CARD_NUMBER_COLOR,
+                    font_size=self.font_size,
+                    font_family='Roboto Mono, monospace',
+                    text=str(self.number),
                 ),
             ],
         )
@@ -119,7 +135,12 @@ class Generator:
                 text='@import url("https://fonts.googleapis.com/css?family=Roboto+Mono:400");',
             ),
         ])
-        yield svg.Rect(x=0, y=0, width=self.page_width, height=self.page_height, fill='grey')
+        yield svg.Rect(
+            x=0, y=0,
+            width=self.page_width,
+            height=self.page_height,
+            fill=PAGE_BG_COLOR,
+        )
         for card in self.cards:
             if card.coord.page == page_number:
                 yield card.render()
@@ -138,9 +159,11 @@ class Generator:
         """
         cards = []
         phrases = (ROOT / 'phrases.txt').read_text().strip().splitlines()
+        card_number = count(1)
         for coord, phrase in zip(self.iter_coords(), phrases):
             cards.append(Card(
                 coord=coord,
+                number=next(card_number),
                 text=phrase,
                 width=self.card_width,
                 height=self.card_height,
@@ -160,8 +183,8 @@ class Generator:
         right_stop = self.page_width - step_x - self.border
         bottom_stop = self.page_height - step_y - self.border
         for page in range(1, 100):
-            for x in range(self.border, right_stop, step_x):
-                for y in range(self.border, bottom_stop, step_y):
+            for y in range(self.border, bottom_stop, step_y):
+                for x in range(self.border, right_stop, step_x):
                     yield Coord(page=page, x=x, y=y)
 
 
