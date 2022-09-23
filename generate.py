@@ -124,8 +124,9 @@ class Generator:
 
     def generate_page(self, page_number: int) -> svg.SVG:
         return svg.SVG(
-            width=self.page_width,
-            height=self.page_height,
+            viewBox=svg.ViewBoxSpec(0, 0, self.page_width, self.page_height),
+            width=svg.mm(self.page_width),
+            height=svg.mm(self.page_height),
             elements=list(self.iter_cards(page_number)),
         )
 
