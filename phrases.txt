@@ -25,4 +25,17 @@ Test behavior, not realization
 Be conservative in what you send, be liberal in what you accept
 A little copying is better than a little dependency
 Clear is better than clever
-
+Less is more
+Start with research
+Listen to others
+Weeks of writing save hours of reading
+Don't blame
+Think how to exploit
+Premature optimization is the root of all evil
+Make it work, then make it right, then make it fast
+CPU time is always cheaper than an engineer's time
+Let it crash
+Fail fast
+Keep changes small
+The only thing better than perfect is standardized
+Profile before optimizing
