@@ -1,28 +1,40 @@
-Nothing is somebody else's problem
-Keep it simple
-Automate everything
-Decouple and isolate
-The project must always work
-Welcome changing requirements
-Never ship shit
-The software must be changeable
-Keep interfaces small
-Leave the code better than you found it
+nothing is somebody else's problem
+keep it simple
+automate everything
+decouple and isolate
+the project must always work
+welcome changing requirements
+never ship shit
+the software must be changeable
+keep interfaces small
+leave the code better than you found it
 QA must find nothing
-Refactoring must be safe and easy
-Ask as much as you can
-Say "No" if the answer is "No"
-Use TDD
-Allow major decisions to be deferred
-No global state
-Don't break interfaces
-Prove it
-Have sleep
-Don't work overtime
-Review to improve, not to enforce
-Prioritize
-Test behavior, not realization
-Be conservative in what you send, be liberal in what you accept
-A little copying is better than a little dependency
-Clear is better than clever
-
+refactoring must be safe and easy
+ask as much as you can
+say "No" if the answer is "No"
+use TDD
+allow major decisions to be deferred
+no global state
+don't break interfaces
+prove it
+have sleep
+don't work overtime
+review to improve, not to enforce
+prioritize
+test behavior, not realization
+be conservative in what you send, be liberal in what you accept
+a little copying is better than a little dependency
+clear is better than clever
+less is more
+start with research
+listen to others
+weeks of writing save hours of reading
+don't blame
+think how to exploit
+premature optimization is the root of all evil
+make it work, then make it right, then make it fast
+let it crash
+fail fast
+keep changes small
+the only thing better than perfect is standardized
+profile before optimizing
