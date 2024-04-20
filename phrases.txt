@@ -21,7 +21,7 @@ have sleep
 don't work overtime
 review to improve, not to enforce
 prioritize
-test behavior, not realization
+test behavior, not implementation
 be conservative in what you send, be liberal in what you accept
 a little copying is better than a little dependency
 clear is better than clever
